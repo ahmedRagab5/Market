@@ -1,12 +1,17 @@
 div{
   padding: 20px;
   /* background-color:  #d32f2f; */
-  p{
+  div{
+
     text-align: center;
     font-size: x-large;
     font-weight: 400;
     span{
       color: white;
+
+    }
+    a{
+      margin-left: 5px;
     }
   }
 

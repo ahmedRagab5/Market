@@ -1,0 +1,16 @@
+{
+  "navbar":{
+    "title":"Market",
+    "products":"Products",
+    "login":"Log in"
+  },
+  "log-in":{
+    "login":"Log in",
+    "reg":"i have not acount ",
+    "a":"regester"
+  },
+  "footer":{
+    "made":"Made by",
+    "name":"Ahmed Ragab"
+  }
+}

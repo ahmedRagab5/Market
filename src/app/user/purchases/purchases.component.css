@@ -30,8 +30,8 @@
 }
 .card{
   position: relative;
-  /* width: 200px; */
-  border: 2px solid #999;
+  background-color: var(--card-color);
+  border: 2px solid #5b5555;
   border-radius: 5px;
   padding: 0;
   text-align: center;
@@ -39,7 +39,7 @@
   justify-content: space-between;
   .image{
     overflow: hidden;
-    border-bottom:2px solid #999 ;
+    border-bottom:2px solid #5b5555 ;
     padding: 10px;
   }
   img{
@@ -49,17 +49,20 @@
     text-decoration: none;
     color: black;
   }
+  h5,p{
+    color: var(--text-color);
+  }
 }
 .star span{
  cursor: pointer;
 }
 
 .card:hover{
-  border-color: black;
+  border-color: var(--text-color);
   transform: translateY(-10px);
   transition: 0.7s;
   .image{
-    border-color: black;
+    border-color: var(--text-color);
   };
 
 }
@@ -73,11 +76,12 @@
   position: absolute;
   top: 0;
   left: 0;
-  background-color: white;
+  background-color: transparent;
+  color: red;
   padding: 5px;
 }
 .trash:hover{
-  background-color: red;
+  background-color: var(--text-color);
 }
 .back{
   position: fixed;

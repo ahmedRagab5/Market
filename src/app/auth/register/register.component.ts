@@ -6,11 +6,12 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'fire
 import { acount, FirebaseService } from '../../services/firebase.service';
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
+import { WaitComponent } from "../../templete/wait/wait.component";
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [FormsModule,ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule, WaitComponent],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
@@ -21,7 +22,7 @@ export class RegisterComponent {
   private firebaseService:FirebaseService=inject(FirebaseService)
   private userService:UserService=inject(UserService)
 
-
+  load=false;
   acountForm:any;
   email:string='';
   password:string='';
@@ -42,7 +43,7 @@ export class RegisterComponent {
           age: [, [Validators.required,]],
           image: [''],
           email: ['', [Validators.required,]],
-          password: ['', [Validators.required,]],
+          password: ['', [Validators.required,Validators.minLength(8)]],
         });
   }
 
@@ -53,6 +54,7 @@ export class RegisterComponent {
       const userCredential=await createUserWithEmailAndPassword(this.auth,this.email,this.password);
 
       this.hid=false
+      this.load=true
 
 
 
@@ -61,7 +63,7 @@ export class RegisterComponent {
           this.userId = uid?uid:'';
           // console.log("role",this.role)
 
-          console.log("المعرف الفريد للمستخدم:", this.userId);
+          // console.log("المعرف الفريد للمستخدم:", this.userId);
           const data:acount={
             name:{
               fName:this.acountForm.get("name.fName").value,
@@ -73,7 +75,7 @@ export class RegisterComponent {
             email:this.acountForm.get("email").value,
             order:0,
           }
-          console.log('userId',this.userId)
+          // console.log('userId',this.userId)
           // console.log('role',this.role)
           this.firebaseService.addAcount(this.userId,data).then(async()=>{
             await signInWithEmailAndPassword(this.auth,this.email,this.password)

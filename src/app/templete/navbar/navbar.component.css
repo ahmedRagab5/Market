@@ -1,19 +1,77 @@
 nav{
   z-index: 5;
-
+  position: relative;
+}
+#navbarNav{
+  flex: none;
 }
 nav ul {
   gap: 20px;
   li{
   margin: 0 !important;
+
+  width: fit-content;
   }
 }
 a{
   color: white;
 }
-.active{
-  border-bottom:2px solid black ;
+.navbar-toggler{
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
+  border: 0;
+  outline: 0;
+  padding: 10px;
 }
+.navbar-toggler:focus{
+  box-shadow: none;
+}
+.navbar-toggler span{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 25px;
+  height: 2px;
+  background-color: black;
+  transform-origin: center center;
+}
+.navbar-toggler {
+  span:nth-child(2){
+    display: block;
+    transform:translate(-50%,-50%)
+  }
+  span:nth-child(1){
+    transform:translate(-50%,calc(-50% + 5px))
+  }
+  span:nth-child(3){
+    transform:translate(-50%,calc(-50% - 5px))
+  }
+}
+.navbar-toggler.open{
+  span:nth-child(2){
+    display: none;
+  }
+  span:nth-child(1){
+    transform:translate(-50%,-50%) rotate(45deg) ;
+  }
+  span:nth-child(3){
+   transform:translate(-50%,-50%) rotate(-45deg) ;
+  }
+}
+
+
+
+.nav-link:hover{
+  color: var(--nav-color) ;
+}
+.nav-link.active{
+  border-bottom:2px solid var(--nav-color) ;
+  color:  var(--nav-color) !important;
+}
+
 
 .img{
   background-image: url(/assets/image/profail2.png);
@@ -32,4 +90,24 @@ a{
     height: 100%;
   }
 }
+
+.mode{
+  cursor: pointer;
+}
+
+@media (max-width:991px) {
+  .navbar-collapse{
+    position: absolute;
+    top: 100%;
+    right: -1px;
+    padding: 15px;
+    background-color: #dc3545e3;
+    transition: 0.3s;
+
+  }
+  .navbar-toggler {
+    display: flex;
+  }
+}
+
 

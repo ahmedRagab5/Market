@@ -1,12 +1,17 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-danger">
+  <div>
+<nav class="navbar navbar-expand-lg navbar-primary bg-danger">
+
   <div class="container d-flex justfiy-content-between">
-    <span class="navbar-brand fw-bold fs-1 text-light">Market</span>
+    <span class="navbar-brand fw-bold fs-1 text-light">{{"navbar.title" | transloco}}</span>
     <!-- <a class="navbar-brand" href="#">Market</a> -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" onclick="this.classList.toggle('open')">
+      <!-- <span class="navbar-toggler-icon"></span> -->
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto fs-2 fw-simebold">
+      <ul class="navbar-nav  fs-2 fw-simebold">
 
 
 
@@ -39,7 +44,7 @@
               <a class="nav-link" routerLink="/admProducts" routerLinkActive="active">Products</a>
             </li>
             <li class="nav-item ms-5" >
-              <a class="nav-link" routerLink="/admCart" routerLinkActive="active">Cart</a>
+              <a class="nav-link" routerLink="/admCart" routerLinkActive="active">Orders</a>
             </li>
             <li class="nav-item ms-5" >
               <a class="nav-link" routerLink="/users" routerLinkActive="active">Users</a>
@@ -54,13 +59,36 @@
         }
         @else {
           <li class="nav-item" >
-            <a class="nav-link" routerLink="guestProducts" routerLinkActive="active">Products</a>
+            <a class="nav-link" routerLink="guestProducts" routerLinkActive="active">{{"navbar.products" | transloco}}</a>
           </li>
           <li class="nav-item ms-5">
-            <a class="nav-link" routerLink="/login" routerLinkActive="active">Log in</a>
+            <a class="nav-link" routerLink="/login" routerLinkActive="active">{{"navbar.login" | transloco}}</a>
           </li>
         }
+        @if (role!=='admine'){
+          <li class="nav-item ms-5 mode d-flex align-items-center" >
+            @if (m==='dark') {
+              <div (click)="mode()"><fa-icon  [icon]="faMoon"></fa-icon></div>
+
+            }
+            @else{
+                            <span (click)="mode()"><fa-icon style="font-size: x-large; color: yellow;" [icon]="faSun"></fa-icon></span>
+            }
+
+          </li>
+        }
+        <!-- <i style="font-size: x-large; color: yellow;" class="fa-solid fa-sun"></i> -->
+        <!-- <li class="nav-item ms-5 d-flex align-items-center" >
+          <select name="" id="lang"   (change)="lang()" [formControl]="langSelect" style="font-size: small;">
+            <option value="en" selected>EN</option>
+            <option value="ar">AR</option>
+          </select>
+        </li> -->
       </ul>
+
     </div>
+
   </div>
-</nav>
+  </nav>
+  </div>
+

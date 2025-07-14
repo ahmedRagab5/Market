@@ -9,6 +9,10 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { FirebaseService } from './services/firebase.service';
+import { provideTransloco,translocoConfig } from '@jsverse/transloco';
+import { TranslocoHttpLoader } from './services/transloco.service';
+
+
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -23,6 +27,16 @@ export const appConfig: ApplicationConfig = {
     provideFirestore(() => getFirestore()),
     FirebaseService,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+    provideHttpClient(),
+    provideTransloco({
+      config: translocoConfig({
+        availableLangs: ['en', 'ar'],
+        defaultLang: 'en',
+        reRenderOnLangChange: true,
+        prodMode: false,
+      }),
+      loader: TranslocoHttpLoader,
+    }),
   ]
 };

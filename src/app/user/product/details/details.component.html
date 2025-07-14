@@ -1,3 +1,4 @@
+<div  >
 <div class="arrow" (click)="arrow()">
   <i class="fa-solid fa-arrow-left"></i>
 </div>
@@ -28,7 +29,7 @@
           <span>Description : </span>{{product.description}}
         </p>
         <p>
-          <span>Rate : </span>{{product?.rating?.rate}}
+          <span>Rate : </span>{{(product?.rating?.rate).toFixed(1)}}
         </p>
         <p>
           <span>Count  : </span>{{product?.rating?.count}}
@@ -41,8 +42,9 @@
         </p>
       </div>
     </div>
-    
+
 
   </div>
 }
 }
+</div>

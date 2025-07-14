@@ -29,7 +29,7 @@
         @for (order of viewItems; track $index) {
           <div class="order row" [style]="$index%2===0?'background-color:#999':'background-color:white'">
             <div class="col col-lg-2 text-center"> <span class="small">Num : </span> {{$index + 1}}</div>
-            <div class="col col-lg-2" (click)="pro($index)" style="cursor: pointer;"> <span class="small">Name : </span> {{order.userName}}</div>
+            <div class="col col-lg-2" (click)="pro(order.userId)" style="cursor: pointer;"> <span class="small">Name : </span> {{order.userName}}</div>
             <div class="col col-lg-3"> <span class="small">Date : </span> {{order.date}}</div>
             <div class="col col-lg-2"> <span class="small">Quantity : </span> {{order.quantity}}</div>
             <div class="col col-lg-3 row gap-1 m-0 ">
@@ -50,7 +50,8 @@
       <h2>Details Order</h2>
       <h3 class="text-danger" (click)="cancel()" style="cursor: pointer;"><i class="fa-solid fa-xmark"></i></h3>
     </div>
-    <div  style="width: 100%;">
+
+    <div  style="width: 100%;" class="d-data">
       <div class="row head">
         <div class="col col-3"></div>
         <div class="col col-3">Title</div>
@@ -59,7 +60,7 @@
         <div class="col col-2 text-center">Total</div>
       </div>
       <!-- <form > -->
-        <div class="body">
+        <div class="d-body">
           @for (item of detailsOrders; track $index ) {
             <div class="row align-items-center p-3"  [style.backgroundColor]="$index % 2==0 ? '#dbd9d9' : 'white'" >
               <div class="col col-3"><div style="border-radius: 50%;"><img style="border-radius: 50%;" [src]="item.item.image" alt="" width="100px" height="100px"></div></div>
@@ -72,31 +73,32 @@
           }
         </div>
       <!-- </form> -->
+
     </div>
 
   </div>
   <div class="back" [class.hidden]="profile" (click)="cancel()"></div>
   <div class="profile" [class.hidden]="profile">
     <div class="d-flex justify-content-between w-100">
-      <h2>Profile</h2>
+      <h2>User Info</h2>
       <h3 class="text-danger" (click)="cancel()" style="cursor: pointer;"><i class="fa-solid fa-xmark"></i></h3>
     </div>
     <div style="width: 100%;">
       <div class="row head">
         <div class="col col-3"></div>
         <div class="col col-2">Name</div>
-        <div class="col col-5">Email</div>
-        <div class="col col-2">Phone</div>
+        <div class="col col-4">Email</div>
+        <div class="col col-3">Phone</div>
       </div>
-      <div class="body row align-items-center p-3"   >
+      <div class="p-body row align-items-center p-3"   >
         <div class="col col-3 image " >
           @if (user.image) {
             <img style="border-radius: 50%;" [src]="user.image" alt="" width="100%" height="100%">
           }
         </div>
         <div class="col col-2">{{user.name?.fName +' '+ user.name?.lName}}</div>
-        <div class="col col-5">{{user.email}}</div>
-        <div class="col col-2">{{user.phone}}</div>
+        <div class="col col-4">{{user.email}}</div>
+        <div class="col col-3">{{user.phone}}</div>
       </div>
 
     </div>

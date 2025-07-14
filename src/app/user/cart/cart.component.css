@@ -1,6 +1,13 @@
+.body{
+  background-color: var(--main-color);
+  min-height: 100vh;
+}
 .container{
   position: relative;
   padding: 20px;
+}
+h1,div{
+  color: var(--text-color);
 }
 .cont{
   position: relative;
@@ -22,6 +29,11 @@
   width: 100%;
   margin: 0;
   border-bottom: 1px solid #dbd9d9;
+  input{
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    background-color: var(--main-color);
+  }
 }
 .check{
   position: absolute;
@@ -41,7 +53,7 @@
   width: fit-content;
   transition: opacity 0.3s ease;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  position: absolute;
+  position: fixed;
   top: 100px;
   left: 50%;
   transform: translateX(-50%);
@@ -52,6 +64,7 @@
   background-color: #01471c;
   color: #94cd97;
   border: 1px solid #81c784;
+
 }
 
 @media (min-width:769px) {
@@ -122,4 +135,7 @@
     }
   }
 
+}
+.back{
+  background-color: var(--main-color);
 }

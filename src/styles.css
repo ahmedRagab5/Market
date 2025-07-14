@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --main-color: white;
+  --card-color:white;
+  --text-color:black;
+  --cart-color:#dbd9d9;
+  --pro-color:#eee;
+  --nav-color:#2f83ff;
+  --lang:ltr;
+
+}
+
+.dark-mode {
+  --main-color: black;
+  --card-color:#212529;
+  --text-color:white;
+  --cart-color:#0a233c;
+  --pro-color:white;
+  --nav-color:black;
+}
+.arab-lang{
+  --lang:rtl;
+
+}
+*{
+  transition: 01s ease;
+  direction: var(--lang);
+}
+

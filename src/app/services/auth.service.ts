@@ -33,7 +33,6 @@ export class AuthService {
   //   });
   // }
   getCurrentUserId(): Observable<string | null> {
-    console.log(3);
     return from(
       new Promise<string | null>((resolve) => {
         const user: User | null = this.auth.currentUser; // جلب المستخدم الحالي مباشرةً

@@ -9,11 +9,11 @@
   <form [formGroup]="proForm">
     <div class="image">
       <div class="img">
-        <div  [style.display]="(edit)?((image)?'block':'none'):'none'" (click)="cancel()" class="text-light" ><i class="fa-solid fa-xmark"></i></div>
+        <div  [style.display]="(edit)?((image)?'block':'none'):'none'" (click)="cancel()" class="text-light" ><i class="fa-solid fa-xmark text-dark"></i></div>
         <img [src]="image" alt="">
         <input id="fileInput" class="sp" type="file" formControlName="image" (change)="onFileSelected($event)" accept="image/*">
         <label for="fileInput" class="upload" [class.sp]="!edit">
-          <i class="fa-solid fa-camera"></i>
+          <span><i class="fa-solid fa-camera"></i></span>
         </label>
       </div>
 

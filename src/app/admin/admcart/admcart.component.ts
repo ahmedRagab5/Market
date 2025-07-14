@@ -51,7 +51,7 @@ export class AdmcartComponent implements OnInit{
 
       this.orders=data
       if (data) {
-        console.log(data)
+        // console.log(data)
         this.load=false
       }
       this.view()
@@ -107,9 +107,13 @@ export class AdmcartComponent implements OnInit{
       return (product.quantity * product.item.price).toFixed(3);
     }
 
-    pro(i:number){
-      this.user=this.users[i]
-      this.profile=false
+    pro(id:any){
+      this.firebaseService.getUserById(id).then((u)=>{
+        this.user=u
+        this.profile=false
+      })
+
+
     }
 
 
@@ -152,7 +156,7 @@ async done(order: any) {
       }
     }
 
-    console.log('✅ تم الانتهاء من معالجة الطلب');
+    // console.log('✅ تم الانتهاء من معالجة الطلب');
 
   } catch (error) {
     console.error('❌ خطأ أثناء جلب البيانات:', error);

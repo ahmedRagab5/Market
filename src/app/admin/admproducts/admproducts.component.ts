@@ -1,20 +1,23 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule,Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormControlName, ReactiveFormsModule,Validators } from '@angular/forms';
 import { min } from 'rxjs';
 import { title } from 'process';
 import { AuthService } from '../../services/auth.service';
 import { FirebaseService, item, Product } from '../../services/firebase.service';
 import { BlobOptions } from 'buffer';
 import { WaitComponent } from "../../templete/wait/wait.component";
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-admproducts',
   standalone: true,
-  imports: [ReactiveFormsModule, WaitComponent],
+  imports: [ReactiveFormsModule, WaitComponent,FontAwesomeModule],
   templateUrl: './admproducts.component.html',
   styleUrl: './admproducts.component.css'
 })
 export class AdmproductsComponent implements OnInit{
+  faXmark=faXmark;
   products:any[]=[]
   addForm:any;
   hidden:boolean=true;
@@ -25,6 +28,8 @@ export class AdmproductsComponent implements OnInit{
   load=true
   isDelete:boolean=false
   deleteProduct:string=''
+  searchPro:any[]=[]
+  pattern = new RegExp("");
   private firebaseService:FirebaseService=inject(FirebaseService)
   private fb:FormBuilder=inject(FormBuilder)
 
@@ -42,6 +47,7 @@ export class AdmproductsComponent implements OnInit{
       this.products=data
       if (data) {
         this.load=false
+        this.searchPro=data
       }
     })
   }
@@ -98,6 +104,7 @@ export class AdmproductsComponent implements OnInit{
       'rating':{
         'rate':0,
         'count':this.addForm.get('count')?.value,
+        'vote':0
       }
 
     }
@@ -159,6 +166,14 @@ export class AdmproductsComponent implements OnInit{
     } catch (_) {
       return false;
     }
+  }
+
+  onInputChange(event:Event){
+    const value = (event.target as HTMLInputElement).value;
+    this.pattern=new RegExp("^" + value + ".*");
+    this.searchPro=this.products.filter((item)=>{
+      return this.pattern.test(item.title.toLowerCase())
+    })
   }
 
 

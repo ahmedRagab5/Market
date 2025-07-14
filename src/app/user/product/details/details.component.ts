@@ -3,6 +3,7 @@ import { FirebaseService, Product } from '../../../services/firebase.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { WaitComponent } from "../../../templete/wait/wait.component";
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-details',
@@ -17,13 +18,16 @@ export class DetailsComponent {
   path:string=''
   load:boolean=true
   notFound:boolean=false
+  mode:boolean=true
   private router:Router=inject(Router)
   private firebaseService:FirebaseService=inject(FirebaseService)
+  private userService:UserService=inject(UserService)
 
 
   private route = inject(ActivatedRoute);
 
   async ngOnInit() {
+    
     const id:string = this.route.snapshot.paramMap.get('id')!;
     if (id) {
       this.product = await this.firebaseService.getProductById(id);

@@ -1,7 +1,27 @@
+.body{
+  background-color: var(--main-color);
+  min-height: 100vh;
+}
+.container{
+  width: 100%;
+
+}
+select , .top input{
+      background-color: var(--main-color);
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+}
 .cont{
   display: grid;
   grid-template-columns: repeat(4,1fr);
   gap: 15px;
+}
+.top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+
 }
 @media(max-width: 992px){
 
@@ -14,6 +34,17 @@
   .cont{
     grid-template-columns: repeat(2,1fr);
   }
+  .top{
+    flex-direction: column-reverse;
+    gap: 10px;
+    input{
+      width: 100%;
+      border: 1px solid black;
+    }
+    select{
+      width: 100%;
+    }
+  }
 }
 @media(max-width: 576px){
 
@@ -22,6 +53,12 @@
   }
 }
 
+.card{
+  background-color: var(--card-color);
+  p,h5{
+    color: var(--text-color);
+  }
+}
 
 .card:hover{
   transform: translatey(-10px);

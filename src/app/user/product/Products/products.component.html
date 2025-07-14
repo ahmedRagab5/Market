@@ -1,25 +1,29 @@
-<div class="container p-5 ">
+<div  >
+
+
+<div class="container p-5">
   @if (load) {
     <app-wait></app-wait>
   }
   @else {
-  <div class="mb-5">
-    <select name="categories" id="" [formControl]="selectedControl" >
+  <div class="mb-5 top">
+    <select name="categories" id="" [formControl]="selectedControl" (change)="selectChange()">
       <option value="all">All</option>
       <option value="electronics">Electronics</option>
       <option value="jewelery">Jewelery</option>
       <option value="men's clothing">Men's clothing</option>
       <option value="women's clothing">women's clothing</option>
     </select>
+    <input type="text" placeholder="Search" (input)="change($event)">
   </div>
     <div class="cont "  >
 
-      @for (product of products; track $index) {
+      @for (product of searchpro; track $index) {
         @if (product.category===selectedControl.value || selectedControl.value==="all") {
           <div class="card p-0 " [id]="'p-'+product.id" tabindex="-1" >
             <div class="card-body" (click)="details(product.id)">
               <img [src]="product.image" class="card-img-top p-2" width="100%" height="200px">
-              <h5 class="card-title" style="height: 100px;">{{product.title}}</h5>
+              <h5 class="card-title" style="height: 100px;text-align: center;">{{product.title}}</h5>
               <p class="card-text text-center" style="font-size: larger;">Count : {{product.rating.count}}</p>
 
               <div class="star text-center p-2">
@@ -31,7 +35,7 @@
                   }
                   @else {
                     <span >
-                      <i class="fa-regular fa-star" ></i>
+                      <i class="fa-regular fa-star" style="color: darkgoldenrod;"></i>
                     </span>
                   }
                 }
@@ -60,4 +64,5 @@
     </div>
     <!-- <button (click)="update()">update</button> -->
   }
+</div>
 </div>

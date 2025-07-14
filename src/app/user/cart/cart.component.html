@@ -1,3 +1,4 @@
+
 @if (load) {
   <app-wait></app-wait>
 }
@@ -16,7 +17,7 @@
     </div>
     <div class="cont">
       <div class="data" style="width: 100%;">
-        <div class="row des">
+        <div class="row des ps-3 pe-3 m-0 text-center">
           <div class="col col-1"></div>
           <div class="col col-2">Title</div>
           <div class="col col-1">Price</div>
@@ -27,7 +28,7 @@
         <!-- <form > -->
           <div style="width: 100%;">
             @for (item of items; track $index ) {
-                <div class="row align-items-center p-3 parent"  [style.backgroundColor]="$index % 2==0 ? '#dbd9d9' : 'white'" >
+                <div class="row align-items-center p-3 parent"  [style.backgroundColor]="$index % 2==0 ? 'var(--cart-color)' : 'var(--card-color)'" >
                   @if (custom) {
                     <div class="check">
                       @if(isDisabled[$index]){
@@ -49,13 +50,15 @@
                   }
                   <div class="col col-lg-1"><div style="border-radius: 50%;"><img style="border-radius: 50%;" [src]="item.item.image" alt="" width="100px" height="100px"></div></div>
                   <div class="col col-lg-2"><p>{{item.item.title}}</p></div>
-                  <div class="col col-lg-1">{{(item.item.price).toFixed(3)}} L.E</div>
-                  <td class="col col-lg-3">
-                    <button type="button" class="btn btn-primary" (click)="plus(item,$index)">+</button>
-                    <input type="number" [ngModel]="item.quantity" (ngModelChange)="item.quantity = $event" [ngModelOptions]="{standalone: true}" min="1">
-                    <button type="button" class="btn btn-primary" (click)="minas(item,$index) " >-</button>
-                  </td>
-                  <td class="col col-lg-2"><p class="text-center">{{total(item)}} L.E</p></td>
+                  <div class="col col-lg-1"><p>{{(item.item.price).toFixed(3)}} L.E</p></div>
+                  <div class="col col-lg-3 d-flex" style="place-content: center;">
+                    <div>
+                      <button type="button" class="btn btn-primary" (click)="plus(item,$index)">+</button>
+                      <input type="number" [ngModel]="item.quantity" class="text-center" (ngModelChange)="item.quantity = $event" [ngModelOptions]="{standalone: true}" min="1" disabled="true">
+                      <button type="button" class="btn btn-primary" (click)="minas(item,$index) " >-</button>
+                    </div>
+                  </div>
+                  <div class="col col-lg-2"><p class="text-center">{{total(item)}} L.E</p></div>
                   <div class="col col-lg-3 text-center d-flex flex-column">
                     @if (!custom) {
                       <div>
@@ -84,7 +87,7 @@
             <button type="button" class="btn btn-success" (click)="cusOrder()" [disabled]="!isCustom.includes(true)">Order</button>
           </div>
           <div>
-            <button type="button" class="btn btn-danger" (click)="cancel()" >Cancel</button>
+            <button type="button" class="btn btn-danger" (click)="cancel()" >Colse</button>
           </div>
         </div>
       </div>
@@ -108,11 +111,11 @@
       </div>
     }
 
-    @if (success) {
+    <!-- @if (success) {
       <div class="alert alert-success mt-3" role="alert">
         ✅ Order Done
       </div>
-    }
+    } -->
   </div>
 </div>
 @if (custom) {

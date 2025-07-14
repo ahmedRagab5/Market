@@ -1,11 +1,11 @@
-<div class="container">
-  <div class="login">
-    <input type="email" [(ngModel)]="email" placeholder="Email">
-    <input type="password" [(ngModel)]="password" placeholder="Password">
-    <button class="btn btn-success" (click)="login()">Log in</button>
+<div class="container" >
+  <form class="login" [formGroup]="loginForm">
+    <input id="name" type="text" formControlName="email" placeholder="Email" autocomplete="off">
+    <input id="password" type="password" formControlName="password" placeholder="Password">
+    <button  class="btn btn-success" (click)="login()">{{"log-in.login" | transloco }}</button>
     @if (hid) {
       <p>error!</p>
     }
-    <p>i have not acount <a routerLink="/register">regester</a></p>
-  </div>
+    <p><span>{{"log-in.reg" | transloco }} </span> <a routerLink="/register">{{"log-in.a" | transloco }}</a></p>
+  </form>
 </div>

@@ -43,10 +43,14 @@ export class ProductsComponent implements OnInit{
   load:boolean=true
   selectedControl = new FormControl('all');
   focusId:string=''
+  mode:boolean=true
+  searchpro:any[]=[]
+  pattern=new RegExp('')
 
 
 
 
+  private userService:UserService = inject(UserService);
   private firebaseService:FirebaseService = inject(FirebaseService);
   private router = inject(Router);
   private authService:AuthService = inject(AuthService);
@@ -54,17 +58,32 @@ export class ProductsComponent implements OnInit{
 
 
   async ngOnInit(){
+
+    if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
+      if (localStorage.getItem('select')) {
+        this.selectedControl.setValue(localStorage.getItem('select'))
+      }
+      else{
+        localStorage.setItem('select','all')
+      }
+    }
+
+
     this.isFound()
     this.firebaseService.getItems(`products`).subscribe( data => {
       this.products = data;
       if (data) {
         this.load=false
+        this.searchpro=data
       }
     });
 
 
   }
 
+  selectChange(){
+    localStorage.setItem('select',this.selectedControl.value||'all')
+  }
 
   isFound(){
     this.authService.getCurrentUserId().subscribe(uid => {
@@ -75,7 +94,7 @@ export class ProductsComponent implements OnInit{
 
       })
 
-      console.log("المعرف الفريد للمستخدم:", this.userId);
+      // console.log("المعرف الفريد للمستخدم:", this.userId);
     }});
   }
 
@@ -129,5 +148,11 @@ export class ProductsComponent implements OnInit{
     this.router.navigate(['/details', productId], {
       queryParams: { path: this.userId?'/products':'/guestProducts' }
     });
+  }
+
+  change(event:Event){
+    const value=(event.target as HTMLInputElement).value
+    this.pattern=new RegExp(`^${value}.*`)
+    this.searchpro=this.products.filter(item=> this.pattern.test(item.title.toLowerCase()))
   }
 }

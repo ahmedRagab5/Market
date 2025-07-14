@@ -35,7 +35,7 @@
             }
             @else {
               <span (click)="rate(star,product)">
-                <i class="fa-regular fa-star" style="font-size: 25px;"></i>
+                <i class="fa-regular fa-star" style="font-size: 25px;color: darkgoldenrod;"></i>
               </span>
             }
           }
@@ -49,7 +49,7 @@
 @if (isDelete) {
   <div class="back"  (click)="cancel()"></div>
   <div class="delete" [class.hidden]="!isDelete">
-    <p>You want delete this product?</p>
+    <p>Are you want delete this purchases?</p>
     <div>
       <button class="btn btn-danger" (click)="delete()">Delete</button>
       <button class="btn btn-warning" (click)="cancel()">Cancel</button>

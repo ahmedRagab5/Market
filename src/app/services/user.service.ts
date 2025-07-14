@@ -10,10 +10,16 @@ export class UserService {
 
   private profileImageSubject = new BehaviorSubject<string>('assets/default-avatar.png');
   private roleSubject = new BehaviorSubject<string>('assets/default-avatar.png');
+  private mode = new BehaviorSubject<boolean>(true);
 
   // ملاحظة: يمكن استخدام `profileImage$` في `subscribe()`
   profileImage$ = this.profileImageSubject.asObservable();
   roleSubject$ = this.profileImageSubject.asObservable();
+  mode$ = this.mode.asObservable();
+
+  changeMode(m:boolean){
+    this.mode.next(!m)
+  }
 
   updateProfileImage(newImageUrl: string) {
     console.log("🔄 تحديث الصورة في الخدمة:", newImageUrl);

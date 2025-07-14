@@ -1,3 +1,6 @@
+.body{
+  background-color: var(--main-color);
+}
 .container{
   display: flex;
   justify-content: center;
@@ -22,7 +25,12 @@ span{
   left: 50%;
   transform: translateX(-50%);
 }
-
+p, .arrow {
+  color: var(--text-color);
+}
+.img{
+      min-width: 300px;
+}
 @media(max-width: 768px){
 
   .cont{

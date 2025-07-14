@@ -1,20 +1,24 @@
+@if (load) {
+  <app-wait></app-wait>
+}
+@else {
 <div class="container">
   <form class="reg " [formGroup]="acountForm">
     <div class="img">
-      <div  (click)="cancel()" class="text-light" [style.display]="!image?'none':'block'"><i class="fa-solid fa-xmark"></i></div>
+      <div  (click)="cancel()" class="text-light" [style.display]="!image?'none':'block'" ><span style="color: black;"><i class="fa-solid fa-xmark"></i></span></div>
       <img [src]="imageUrl" alt="">
       <input id="fileInput" class="sp" type="file" formControlName="image" (change)="onFileSelected($event)" accept="image/*">
       <label for="fileInput" class="upload" >
-        <i class="fa-solid fa-camera"></i>
+      <span><i class="fa-solid fa-camera"></i></span>
       </label>
     </div>
     <div formGroupName="name" class="name row w-100 gap-lg-1">
       <input class="col" type="text" formControlName="fName" placeholder="Frist Name">
       <input class="col" type="text" formControlName="lName" placeholder="Last Name">
     </div>
-    <input type="text" formControlName="phone" placeholder="Phone">
+    <input type="text" formControlName="phone" placeholder="Phone" pattern="[0-9]*"  oninput="this.value = this.value.replace(/[^0-9]/g, '')">
     <input type="number" formControlName="age" placeholder="Age">
-    <input type="email" formControlName="email" placeholder="Email" >
+    <input type="text" formControlName="email" placeholder="Email" >
     <input type="password" formControlName="password" placeholder="Password">
     <button class="btn btn-success w-100" (click)="register()" [disabled]="!acountForm.valid">Sign Up</button>
     @if (hid) {
@@ -23,3 +27,4 @@
 
   </form>
 </div>
+}

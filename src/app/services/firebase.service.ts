@@ -81,10 +81,10 @@ export class FirebaseService {
       const productSnap = await getDoc(productRef);
 
       if (productSnap.exists()) {
-        console.log("✅ المنتج موجود:", productSnap.data());
+        // console.log("✅ المنتج موجود:", productSnap.data());
         return { id: productSnap.id, ...productSnap.data() };
       } else {
-        console.warn("⚠️ المنتج غير موجود في السلة.");
+        // console.warn("⚠️ المنتج غير موجود في السلة.");
         return null;
       }
     } catch (error) {
@@ -103,11 +103,11 @@ export class FirebaseService {
       const productSnap = await getDoc(productRef);
 
       if (productSnap.exists()) {
-        console.log("✅ المنتج موجود:", productSnap.data());
+        // console.log("✅ المنتج موجود:", productSnap.data());
 
         return { id: productSnap.id, ...productSnap.data() };
       } else {
-        console.warn("⚠️ المنتج غير موجود في السلة.");
+        // console.warn("⚠️ المنتج غير موجود في السلة.");
         return null;
       }
     } catch (error) {
@@ -125,10 +125,10 @@ export class FirebaseService {
     return from(getDoc(productRef)).pipe(
       map(productSnap => {
         if (productSnap.exists()) {
-          console.log("✅ المنتج موجود:", productSnap.data());
+          // console.log("✅ المنتج موجود:", productSnap.data());
           return { id: productSnap.id, ...productSnap.data() };
         } else {
-          console.warn("⚠️ المنتج غير موجود.");
+          // console.warn("⚠️ المنتج غير موجود.");
           return null;
         }
       }),
@@ -148,11 +148,11 @@ export class FirebaseService {
     return from(getDoc(productRef)).pipe(
       map(productSnap => {
         if (productSnap.exists()) {
-          console.log("✅ المنتج موجود:", productSnap.data());
+          // console.log("✅ المنتج موجود:", productSnap.data());
           const data=productSnap.data() as item
           return data.rating.count;
         } else {
-          console.warn("⚠️ المنتج غير موجود.");
+          // console.warn("⚠️ المنتج غير موجود.");
           return null;
         }
       }),
@@ -173,10 +173,10 @@ export class FirebaseService {
       const productSnap = await getDoc(productRef);
 
       if (productSnap.exists()) {
-        console.log("✅ المنتج موجود:", productSnap.data());
+        // console.log("✅ المنتج موجود:", productSnap.data());
         return { id: productSnap.id, ...productSnap.data() };
       } else {
-        console.warn("⚠️ المنتج غير موجود في السلة.");
+        // console.warn("⚠️ المنتج غير موجود في السلة.");
         return null;
       }
     } catch (error) {
@@ -186,13 +186,13 @@ export class FirebaseService {
   }
 
 async getUserRole(userId: string): Promise<string | null> {
-  console.log('userId',userId)
+  // console.log('userId',userId)
   const docRef = doc(this.firestore, `user/${userId}`);
   const snapshot = await getDoc(docRef);
-  console.log('snapshot.exists()',snapshot.exists())
+  // console.log('snapshot.exists()',snapshot.exists())
   if (snapshot.exists()) {
     const data = snapshot.data();
-    console.log('get roleUser',data['role'])
+    // console.log('get roleUser',data['role'])
     return data['role'] || null; // إذا كان الحقل غير موجود، أعد `null`
   } else {
     return null; // المستخدم غير موجود
@@ -205,7 +205,7 @@ getItems(path:string): Observable<any[]> {
     // ✅ مراقبة التحديثات في الوقت الحقيقي
     const unsubscribe = onSnapshot(cartRef, (snapshot) => {
       if (snapshot.empty) {
-        console.warn("⚠️ لا توجد منتجات في السلة.");
+        // console.warn("⚠️ لا توجد منتجات في السلة.");
         observer.next([]); // تحديث المصفوفة الفارغة
         return;
       }
@@ -231,7 +231,7 @@ getPurch(userId:string): Observable<any[]> {
 
     const unsubscribe = onSnapshot(cartRef, (snapshot) => {
       if (snapshot.empty) {
-        console.warn("⚠️ لا توجد منتجات في السلة.");
+        // console.warn("⚠️ لا توجد منتجات في السلة.");
         observer.next([]);
         return;
       }
@@ -257,7 +257,7 @@ getOrders(): Observable<any[]> {
     // ✅ مراقبة التحديثات في الوقت الحقيقي
     const unsubscribe = onSnapshot(cartRef,async (snapshot) => {
       if (snapshot.empty) {
-        console.warn("⚠️ لا توجد منتجات في السلة.");
+        // console.warn("⚠️ لا توجد منتجات في السلة.");
         observer.next([]); // تحديث المصفوفة الفارغة
         return;
       }
@@ -318,7 +318,7 @@ async getCart(userId:string) {
 
     return updateDoc(productRef, updatedData)
         .then(() => {
-            console.log("✅ المنتج تم تحديثه بنجاح!", updatedData);
+            // console.log("✅ المنتج تم تحديثه بنجاح!", updatedData);
         })
         .catch(error => {
             console.error("❌ خطأ أثناء تحديث المنتج:", error);
@@ -340,7 +340,7 @@ async updateProduct(productId: string, data: any): Promise<void> {
 
     return updateDoc(productRef, updatedData)
         .then(() => {
-            console.log("✅ المنتج تم تحديثه بنجاح!", updatedData);
+            // console.log("✅ المنتج تم تحديثه بنجاح!", updatedData);
         })
         .catch(error => {
             console.error("❌ خطأ أثناء تحديث المنتج:", error);
@@ -358,7 +358,7 @@ async updatePurch( userId: string,purchId:string, updatedData: any) {
 
   return updateDoc(productRef, updatedData)
       .then(() => {
-          console.log("✅ المنتج تم تحديثه بنجاح!", updatedData);
+          // console.log("✅ المنتج تم تحديثه بنجاح!", updatedData);
       })
       .catch(error => {
           console.error("❌ خطأ أثناء تحديث المنتج:", error);
@@ -376,7 +376,7 @@ async updatePurch( userId: string,purchId:string, updatedData: any) {
     try {
       const productRef = doc(this.firestore, `user/${userId}/cart/${productId}`);
       await deleteDoc(productRef);
-      console.log(`✅ المنتج (${productId}) تم حذفه بنجاح!`);
+      // console.log(`✅ المنتج (${productId}) تم حذفه بنجاح!`);
     } catch (error) {
       console.error("❌ خطأ أثناء حذف المنتج:", error);
     }
@@ -391,7 +391,7 @@ async deleteItem(path:string,itemId: string): Promise<void> {
     try {
       const productRef = doc(this.firestore, `${path}/${itemId}`);
       await deleteDoc(productRef);
-      console.log(`✅ المنتج (${itemId}) تم حذفه بنجاح!`);
+      // console.log(`✅ المنتج (${itemId}) تم حذفه بنجاح!`);
     } catch (error) {
       console.error("❌ خطأ أثناء حذف المنتج:", error);
     }
@@ -406,13 +406,13 @@ async deleteItemOrders(itemId:string): Promise<void> {
     try {
       const ordersCollectionRef = collection(this.firestore, `cartOrder/${itemId}/orders`);
       const ordersSnapshot = await getDocs(ordersCollectionRef);
-      
+
       const deletePromises = ordersSnapshot.docs.map(orderDoc =>
         deleteDoc(doc(this.firestore, `cartOrder/${itemId}/orders/${orderDoc.id}`))
       );
 
     await Promise.all(deletePromises);
-      console.log(`✅ المنتج (${itemId}/orders) تم حذفه بنجاح!`);
+      // console.log(`✅ المنتج (${itemId}/orders) تم حذفه بنجاح!`);
     } catch (error) {
       console.error("❌ خطأ أثناء حذف المنتج:", error);
     }
@@ -435,7 +435,7 @@ async deleteItemOrders(itemId:string): Promise<void> {
       );
 
       await Promise.all(deletePromises);
-      console.log("✅ تم مسح جميع المنتجات من السلة بنجاح!");
+      // console.log("✅ تم مسح جميع المنتجات من السلة بنجاح!");
     } catch (error) {
       console.error("❌ خطأ أثناء مسح السلة:", error);
     }
@@ -486,16 +486,17 @@ async addOrder(userId: string, items: Product[], time: any, name: string) {
         const newcount = data.rating.count - item.quantity;
         await this.updateProduct(item.item.id, { 'rating.count': newcount });
 
-        console.log(`✅ تم تحديث المنتج ${item.item.id} إلى ${newcount}`);
-        if (items.length === 1) {
-          this.deleteCartItem(userId, items[0].id!);
-        } else {
-          this.clearCart(userId);
-        }
-        console.log(`✅ تم إضافة الطلب بنجاح! (Order ID: ${docRef.id})`);
+        // console.log(`✅ تم تحديث المنتج ${item.item.id} إلى ${newcount}`);
+        this.deleteCartItem(userId, item.id!)
+        // if (items.length === 1) {
+        //   this.deleteCartItem(userId, items[0].id!);
+        // } else {
+        //   this.clearCart(userId);
+        // }
+        // console.log(`✅ تم إضافة الطلب بنجاح! (Order ID: ${docRef.id})`);
 
       } else {
-        console.warn(`⚠️ الكمية المطلوبة غير متوفرة للمنتج ${item.item.id}`);
+        // console.warn(`⚠️ الكمية المطلوبة غير متوفرة للمنتج ${item.item.id}`);
       }
     }
 
@@ -544,7 +545,7 @@ navFun(id:string){
           onSnapshot(userDocRef, (docSnap) => {
             if (docSnap.exists()) {
               const data = docSnap.data();
-              console.log('🔥 بيانات المستخدم (محدثة تلقائيًا):', data);
+              // console.log('🔥 بيانات المستخدم (محدثة تلقائيًا):', data);
               return  data ? 'user' : 'admin';
             } else {
               console.log('❌ لا توجد بيانات متاحة للمستخدم بعد.');

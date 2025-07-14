@@ -23,11 +23,25 @@
   z-index: 2;
   padding: 30px;
   background-color: white;
+
+}
+@media (min-width:768px) {
+  .details ,.profile{
+    min-width: 500px;
+  }
 }
 .details{
   max-height: 400px;
-  overflow-y: auto;
+  overflow: hidden;
 }
+.d-body{
+  max-height: 250px;
+  overflow-y: auto;
+
+}
+.d-body > div{
+    width: 100%;
+  }
 .data{
   border: 2px solid black;
   margin-top: 15px;
@@ -83,10 +97,13 @@
     border-bottom: 1px solid black;
   }
   .profile,.details{
+    .col{
+      text-align: center;
+    }
     .head{
       display: none;
     }
-    .body{
+    .d-body,.p-body{
       flex-direction: column;
       div:not(.image){
         padding: 5px;
@@ -94,6 +111,7 @@
       }
     }
   }
+
   .details .body{
     max-height: 320px;
     overflow-y: auto;
