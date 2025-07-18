@@ -1,27 +1,46 @@
-# Market
+# 🛒 Market E-Commerce Web App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.9.
+A **E-Commerce platform** built using **Angular** and **Firebase**, supporting both **User** and **Admin** roles with real-time data and responsive UI.
 
-## Development server
+## 🚀 Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### 👤 Authentication
+- Secure login & registration via **Firebase Authentication**
+- Role-based access: **User** and **Admin**
 
-## Code scaffolding
+---
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### 🛍️ User Panel
+- View all products with **category-based filtering**
+- **Product Details** page with full info and image
+- **Shopping Cart**:
+  - Add/remove items
+  - Adjust quantity
+  - Place single or bulk orders
+- **Order History** with rating & feedback system
+- **Profile Page** to view & update personal info
 
-## Build
+---
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### 🛠️ Admin Dashboard
+- **Product Management**: Add, Edit, Delete products
+- View all **Orders** with full user details and order confirmation
+- **User Management**: View and manage all registered users
 
-## Running unit tests
+---
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 🧱 Architecture & Tools
 
-## Running end-to-end tests
+- 🧩 **Modular Angular Structure**: `Core`, `Shared`, `Features`
+- 🔥 **Firebase Firestore** for real-time database and hosting
+- 🔐 **Firebase Auth** for secure authentication
+- 💻 Fully **Responsive Design**
+- ⚡ **Scalable and maintainable codebase**
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+---
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+https://github.com/user-attachments/assets/a61e1d41-ffd6-4a54-94a0-18544cf9d0a3
+
+
