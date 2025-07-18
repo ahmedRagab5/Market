@@ -30,6 +30,7 @@ export class AdmproductsComponent implements OnInit{
   deleteProduct:string=''
   searchPro:any[]=[]
   pattern = new RegExp("");
+  ser=new FormControl('')
   private firebaseService:FirebaseService=inject(FirebaseService)
   private fb:FormBuilder=inject(FormBuilder)
 
@@ -48,6 +49,7 @@ export class AdmproductsComponent implements OnInit{
       if (data) {
         this.load=false
         this.searchPro=data
+        this.ser.setValue('')
       }
     })
   }

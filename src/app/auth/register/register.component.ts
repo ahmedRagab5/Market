@@ -78,9 +78,12 @@ export class RegisterComponent {
           // console.log('userId',this.userId)
           // console.log('role',this.role)
           this.firebaseService.addAcount(this.userId,data).then(async()=>{
-            await signInWithEmailAndPassword(this.auth,this.email,this.password)
-            this.userService.updateRole('user')
-            this.router.navigate(['/products'])
+          await signInWithEmailAndPassword(this.auth,this.email,this.password)
+          if (typeof window !== 'undefined' && typeof document !== 'undefined'){
+            localStorage.setItem('role','user')
+          }
+          this.userService.updateRole('user')
+          this.router.navigate(['/products'])
 
           })
 

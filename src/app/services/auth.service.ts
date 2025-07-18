@@ -19,6 +19,9 @@ export class AuthService {
 
   // تسجيل الخروج
   logout(): Promise<void> {
+    if (typeof window !== 'undefined' && typeof document !== 'undefined'){
+      localStorage.setItem('role','guest')
+    }
     return signOut(this.auth);
   }
 

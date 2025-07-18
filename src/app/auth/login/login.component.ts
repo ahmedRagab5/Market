@@ -44,6 +44,10 @@ export class LoginComponent {
     try{
       await signInWithEmailAndPassword(this.auth,this.loginForm.get('email')?.value,this.loginForm.get('password')?.value)
       this.hid=false
+      if (typeof window !== 'undefined' && typeof document !== 'undefined'){
+        localStorage.setItem("role",'user')
+      }
+
       this.authService.getCurrentUserId().subscribe(uid => {
         const id=uid
         if (id) {

@@ -486,14 +486,7 @@ async addOrder(userId: string, items: Product[], time: any, name: string) {
         const newcount = data.rating.count - item.quantity;
         await this.updateProduct(item.item.id, { 'rating.count': newcount });
 
-        // console.log(`✅ تم تحديث المنتج ${item.item.id} إلى ${newcount}`);
         this.deleteCartItem(userId, item.id!)
-        // if (items.length === 1) {
-        //   this.deleteCartItem(userId, items[0].id!);
-        // } else {
-        //   this.clearCart(userId);
-        // }
-        // console.log(`✅ تم إضافة الطلب بنجاح! (Order ID: ${docRef.id})`);
 
       } else {
         // console.warn(`⚠️ الكمية المطلوبة غير متوفرة للمنتج ${item.item.id}`);

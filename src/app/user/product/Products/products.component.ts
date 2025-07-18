@@ -46,7 +46,7 @@ export class ProductsComponent implements OnInit{
   mode:boolean=true
   searchpro:any[]=[]
   pattern=new RegExp('')
-
+  role:string|null=''
 
 
 
@@ -66,6 +66,8 @@ export class ProductsComponent implements OnInit{
       else{
         localStorage.setItem('select','all')
       }
+      this.role=localStorage.getItem("role")
+
     }
 
 

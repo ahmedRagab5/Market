@@ -10,7 +10,7 @@
         <button type="button" class="btn btn-success" (click)="add()">Add Product</button>
       </div>
       <div class="ser">
-        <input  type="text" placeholder="Search" (input)="onInputChange($event)">
+        <input  type="text" placeholder="Search" [formControl]="ser" (input)="onInputChange($event)">
       </div>
     </div>
 

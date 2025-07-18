@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "site": "market-48563",
+    "public": "dist/market/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

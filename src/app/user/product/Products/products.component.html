@@ -2,7 +2,7 @@
 
 
 <div class="container p-5">
-  @if (load) {
+  @if (load && role!=='user') {
     <app-wait></app-wait>
   }
   @else {
@@ -42,8 +42,8 @@
               </div>
             </div>
 
-              <div class="d-flex p-2" [style]="userId?'justify-content:space-between':'justify-content:center'">
-                @if (userId) {<div class="d-flex" >
+              <div class="d-flex p-2" [style]="userId||role==='user'?'justify-content:space-between':'justify-content:center'">
+                @if (userId||role==='user') {<div class="d-flex" >
                   @if(idclick===product.id && addDisplay){
                     <input type="number" style="width: 75px;padding: 5px;border-radius: 5px;" [formControl]="input" min="1" >
                     <button type="button" class="btn btn-danger " (click)="add(product)" [disabled]="input.value<1 " >Add</button>
