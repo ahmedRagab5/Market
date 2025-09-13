@@ -40,7 +40,9 @@ A **E-Commerce platform** built using **Angular** and **Firebase**, supporting b
 ---
 
 
+## 🎥 Demo
 
-https://github.com/user-attachments/assets/a61e1d41-ffd6-4a54-94a0-18544cf9d0a3
+[![Watch the video](https://img.youtube.com/vi/zDli1qL5qxc/0.jpg)](https://www.youtube.com/watch?v=zDli1qL5qxc)
+
 
 
